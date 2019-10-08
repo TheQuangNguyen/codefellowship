@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodeFellowShip Create Post</title>
+</head>
+
+<body>
+    <nav th:replace="fragments/common :: navbar"></nav>
+
+    <form action="/post" method="POST">
+        <input type="text" name="postBody" placeholder="Write Your Post">
+        <input type="submit" value="Submit Post">
+    </form>
+</body>
+
+</html>

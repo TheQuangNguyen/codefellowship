@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+
+<body>
+    <nav th:fragment="navbar">
+        <a href="/">
+            <h1>CodeFellowShip</h1>
+        </a>
+        <h1>Welcome, [[${username}]]</h1>
+        <a th:if="${loggedIn}" href="${'/users/' + id}">Profile</a>
+        <a href="/signup">Sign Up</a>
+        <a href="/login">Log In</a>
+        <a th:if="${loggedIn}" href="/logout">Sign Out</a>
+        <a th:if="${loggedIn}" href="/post">Create New Post</a>
+    </nav>
+</body>
+
+</html>
