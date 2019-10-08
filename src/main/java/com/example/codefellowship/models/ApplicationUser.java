@@ -3,11 +3,9 @@ package com.example.codefellowship.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -15,6 +13,10 @@ public class ApplicationUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
+    @OneToMany(mappedBy = "applicationUser")
+    List<Post> posts;
+
 
     String username;
     String password;
@@ -32,6 +34,30 @@ public class ApplicationUser implements UserDetails {
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.bio = bio;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getDateOfBirth() {
+        return this.dateOfBirth;
+    }
+
+    public String getBio() {
+        return this.bio;
+    }
+
+    public List<Post> getPosts() {
+        return this.posts;
+    }
+
+    public long getId() {
+        return this.id;
     }
 
     @Override

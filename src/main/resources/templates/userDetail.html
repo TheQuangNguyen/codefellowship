@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Profile</title>
+</head>
+
+<body>
+    <nav th:replace="fragments/common :: navbar"></nav>
+
+    <h2>Username: [[${currentUser.getUsername()}]]</h2>
+    <h2>First Name: [[${currentUser.getFirstName()}]]</h2>
+    <h2>Last Name: [[${currentUser.getLastName()}]]</h2>
+    <h2>Bio: [[${currentUser.getBio()}]]</h2>
+
+    <h3>My Posts</h3>
+    <ul th:each="post : ${currentUser.getPosts()}">
+        <li>([[${post.getCreatedAt()}]]) : [[${post.getBody()}]]</li>
+    </ul>
+
+</body>
+
+</html>

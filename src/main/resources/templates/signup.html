@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CodeFellowShip Sign Up</title>
+</head>
+
+<body>
+    <nav th:replace="fragments/common :: navbar"></nav>
+
+    <form action="/signup" method="POST">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" , placeholder="Password">
+        <input type="text" name="firstName" placeholder="First Name">
+        <input type="text" name="lastName" placeholder="Last Name">
+        <input type="date" name="dateOfBirth" placeholder="Date Of Birth mm/dd/yyyy">
+        <input type="text" name="bio" placeholder="Tell us something about yourself">
+        <input type="submit" value="Sign Up">
+    </form>
+</body>
+
+</html>
