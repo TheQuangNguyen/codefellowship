@@ -14,9 +14,6 @@ public class HomeController {
     public String getHomePage(Principal p, Model m) {
         if (p != null) {
             m.addAttribute("username", p.getName());
-            m.addAttribute("loggedIn", true);
-        } else {
-            m.addAttribute("username", "User");
         }
         return "home";
     }
@@ -25,9 +22,6 @@ public class HomeController {
     public String getSignUpPage(Principal p, Model m) {
         if (p != null) {
             m.addAttribute("username", p.getName());
-            m.addAttribute("loggedIn", true);
-        } else {
-            m.addAttribute("username", "User");
         }
         return "signup";
     }
@@ -36,7 +30,6 @@ public class HomeController {
     public String getLoginPage(Principal p, Model m) {
         if (p != null) {
             m.addAttribute("username", p.getName());
-            m.addAttribute("loggedIn", true);
         }
         return "login";
     }

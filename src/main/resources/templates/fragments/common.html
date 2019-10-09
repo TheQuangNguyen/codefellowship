@@ -11,12 +11,12 @@
         <a href="/">
             <h1>CodeFellowShip</h1>
         </a>
-        <h1>Welcome, [[${username}]]</h1>
-        <a th:if="${loggedIn}" href="${'/users/' + id}">Profile</a>
-        <a href="/signup">Sign Up</a>
-        <a href="/login">Log In</a>
-        <a th:if="${loggedIn}" href="/logout">Sign Out</a>
-        <a th:if="${loggedIn}" href="/post">Create New Post</a>
+        <h1 th:if="${username}">Welcome, [[${username}]]</h1>
+        <a th:if="${username}" href="/myprofile">Profile</a>
+        <a th:unless=${username} href="/signup">Sign Up</a>
+        <a th:unless=${username} href="/login">Log In</a>
+        <a th:if="${username}" href="/logout">Sign Out</a>
+        <a th:if="${username}" href="/post">Create New Post</a>
     </nav>
 </body>
 

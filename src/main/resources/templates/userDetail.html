@@ -11,10 +11,13 @@
 <body>
     <nav th:replace="fragments/common :: navbar"></nav>
 
+    <h3>My Info</h3>
     <h2>Username: [[${currentUser.getUsername()}]]</h2>
     <h2>First Name: [[${currentUser.getFirstName()}]]</h2>
     <h2>Last Name: [[${currentUser.getLastName()}]]</h2>
     <h2>Bio: [[${currentUser.getBio()}]]</h2>
+
+
 
     <h3>My Posts</h3>
     <ul th:each="post : ${currentUser.getPosts()}">

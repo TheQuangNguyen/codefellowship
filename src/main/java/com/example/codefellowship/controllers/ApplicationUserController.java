@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -42,19 +43,17 @@ public class ApplicationUserController {
         return new RedirectView("/");
     }
 
-    @GetMapping("/users/{id}")
-    public String getUserDetailPage(@PathVariable long id, Model m, Principal p) {
+    @GetMapping("/myprofile")
+    public String getUserDetailPage(Model m, Principal p) {
         if (p != null) {
             m.addAttribute("username", p.getName());
-            m.addAttribute("loggedIn", true);
-        } else {
-            m.addAttribute("username", "User");
         }
-        ApplicationUser currentUser = (ApplicationUser) applicationUserRepository.getOne(id);
-
+        ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
         m.addAttribute("currentUser", currentUser);
         return "userDetail";
     }
+
+
 
     @PostMapping("/post")
     public RedirectView createNewPost(String postBody, Principal p) {
@@ -62,6 +61,6 @@ public class ApplicationUserController {
         Post newPost = new Post(postBody, currentUser);
 
         postRepository.save(newPost);
-        return new RedirectView("/users/" + currentUser.getId());
+        return new RedirectView("/myprofile");
     }
 }
