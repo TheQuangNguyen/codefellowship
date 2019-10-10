@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -17,6 +18,16 @@ public class ApplicationUser implements UserDetails {
     @OneToMany(mappedBy = "applicationUser")
     List<Post> posts;
 
+    @ManyToMany
+    @JoinTable(
+            name="follow_users",
+            joinColumns = { @JoinColumn(name="usersIFollow")},
+            inverseJoinColumns = {@JoinColumn(name = "usersFollowingMe")}
+    )
+    List<ApplicationUser> usersIFollow;
+
+    @ManyToMany(mappedBy = "usersIFollow")
+    List<ApplicationUser> usersFollowingMe;
 
     String username;
     String password;
@@ -58,6 +69,38 @@ public class ApplicationUser implements UserDetails {
 
     public long getId() {
         return this.id;
+    }
+
+    public List<ApplicationUser> getUsersIFollow() {
+        return usersIFollow;
+    }
+
+    public List<ApplicationUser> getUsersFollowingMe() {
+        return usersFollowingMe;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void addUsersToFollow(ApplicationUser userToFollow) {
+        usersIFollow.add(userToFollow);
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     @Override
