@@ -53,7 +53,15 @@ public class ApplicationUserController {
         return "userDetail";
     }
 
-
+    @GetMapping("/myprofile/edit")
+    public String getUserDetailEditPage(Model m, Principal p) {
+        if (p != null) {
+            m.addAttribute("username", p.getName());
+        }
+        ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
+        m.addAttribute("currentUser", currentUser);
+        return "userDetailEdit";
+    }
 
     @PostMapping("/post")
     public RedirectView createNewPost(String postBody, Principal p) {

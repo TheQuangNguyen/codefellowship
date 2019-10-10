@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Profile Edit</title>
+</head>
+
+<body>
+<nav th:replace="fragments/common :: navbar"></nav>
+
+<h3>My Info</h3>
+<form action="/myprofile/edit">
+    <label for="username">Username</label><input type="text" id="username" name="username" th:value="${currentUser.username}">
+        <label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" th:value="${currentUser.firstName}">
+        <label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" th:value="${currentUser.lastName}">
+        <label for="dateOfBirth">Date Of Birth</label><input type="date" id="dateOfBirth" name="dateOfBirth" th:value="${currentUser.dateOfBirth}">
+        <label for="bio">Tell Us Something About Yourself</label><input type="text" id="bio" name="bio" th:value="${currentUser.bio}">
+        <label for="submit">Submit Edit</label><input type="submit" id="submit">
+</form>
+
+<h3>My Posts</h3>
+<ul th:each="post : ${currentUser.getPosts()}">
+    <li>([[${post.getCreatedAt()}]]) : [[${post.getBody()}]]</li>
+</ul>
+
+</body>
+
+</html>
