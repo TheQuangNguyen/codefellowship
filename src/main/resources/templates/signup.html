@@ -12,12 +12,12 @@
     <nav th:replace="fragments/common :: navbar"></nav>
 
     <form action="/signup" method="POST">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" , placeholder="Password">
-        <input type="text" name="firstName" placeholder="First Name">
-        <input type="text" name="lastName" placeholder="Last Name">
-        <input type="date" name="dateOfBirth" placeholder="Date Of Birth mm/dd/yyyy">
-        <input type="text" name="bio" placeholder="Tell us something about yourself">
+        <label for="username">Username</label><input type="text" id="username" name="username">
+        <label for="password">Password</label><input type="password" id="password" name="password" >
+        <label for="firstName">First Name</label><input type="text" id="firstName" name="firstName">
+        <label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName">
+        <label for="dateOfBirth">Date Of Birth</label><input type="date" id="dateOfBirth" name="dateOfBirth">
+        <label for="bio">Tell Us Something About Yourself</label><input type="text" id="bio" name="bio">
         <input type="submit" value="Sign Up">
     </form>
 </body>

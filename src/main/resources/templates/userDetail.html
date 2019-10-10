@@ -17,7 +17,7 @@
     <h2>Last Name: [[${currentUser.getLastName()}]]</h2>
     <h2>Bio: [[${currentUser.getBio()}]]</h2>
 
-
+    <a href="/myprofile/edit"><button>Edit</button></a>
 
     <h3>My Posts</h3>
     <ul th:each="post : ${currentUser.getPosts()}">

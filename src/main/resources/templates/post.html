@@ -10,7 +10,7 @@
     <nav th:replace="fragments/common :: navbar"></nav>
 
     <form action="/post" method="POST">
-        <input type="text" name="postBody" placeholder="Write Your Post">
+        <label for="postBody">Write Your Post</label><input type="text" name="postBody" id="postBody" placeholder="Write Your Post">
         <input type="submit" value="Submit Post">
     </form>
 </body>
