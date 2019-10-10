@@ -13,6 +13,8 @@
         </a>
         <h1 th:if="${username}">Welcome, [[${username}]]</h1>
         <a th:if="${username}" href="/myprofile">Profile</a>
+        <a th:if="${username}" href="/users">Other Users</a>
+        <a th:if="${username}" href="/feed">My Feed</a>
         <a th:unless=${username} href="/signup">Sign Up</a>
         <a th:unless=${username} href="/login">Log In</a>
         <a th:if="${username}" href="/logout">Sign Out</a>
